@@ -1,4 +1,4 @@
-# json-rpc-docs
+# JsonRpcNet.Docs.Ui
 
 ## Project setup
 ```
