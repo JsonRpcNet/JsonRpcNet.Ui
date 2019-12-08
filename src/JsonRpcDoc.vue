@@ -1,7 +1,9 @@
 <template>
   <div id="JsonRpcDocs">
     <BNavbar class="navBar">
-      <BNavbarBrand class="navBarTitle">JsonRpcNet</BNavbarBrand>
+      <BNavbarBrand class="navBarTitle">
+        <img class="logo" src="./assets/logo.svg" alt="JsonRpcNet" />
+      </BNavbarBrand>
 
       <!-- search box is disabled, because the functionality isn't implemented yet -->
       <BNavbarNav class="ml-auto" v-if="apiInfo !== void 0 && false">
@@ -340,6 +342,11 @@ export default {
   font-family: $font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  .logo {
+    height: 32px;
+    opacity: 0.9;
+  }
 
   .split {
     position: absolute;
