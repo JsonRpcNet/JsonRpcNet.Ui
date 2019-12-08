@@ -1,3 +1,5 @@
+[![Travis build status](https://travis-ci.com/JsonRpcNet/JsonRpcNet.Docs.Ui.svg?branch=master)](https://travis-ci.com/JsonRpcNet/JsonRpcNet.Docs.Ui)
+
 # JsonRpcNet.Docs.Ui
 
 ## Project setup
