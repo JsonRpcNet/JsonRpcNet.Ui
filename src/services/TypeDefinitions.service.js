@@ -63,7 +63,7 @@ export class TypeDefinitionsService {
     if (this.isReferenceType(type)) {
       paramTypeDef = this.getTypeReferenceDefinition(type);
     }
-    if(paramTypeDef.type === undefined && ("enum" in paramTypeDef)) {
+    if (paramTypeDef.type === undefined && "enum" in paramTypeDef) {
       return paramTypeDef.enum[0];
     }
     switch (paramTypeDef.type.toLowerCase()) {
