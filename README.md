@@ -1,4 +1,4 @@
-[![Travis build status](https://travis-ci.com/JsonRpcNet/JsonRpcNet.Docs.Ui.svg?branch=master)](https://travis-ci.com/JsonRpcNet/JsonRpcNet.Docs.Ui)
+[![GitHub build action status](https://github.com/JsonRpcNet/JsonRpcNet.Docs.Ui/workflows/Build/badge.svg)](https://github.com/JsonRpcNet/JsonRpcNet.Docs.Ui/actions)
 
 # JsonRpcNet.Docs.Ui
 
