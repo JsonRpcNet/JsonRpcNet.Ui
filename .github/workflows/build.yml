@@ -1,4 +1,4 @@
-name: Node CI
+name: Build
 
 on: [push]
 
@@ -9,7 +9,7 @@ jobs:
   
     steps:
     - uses: actions/checkout@v1
-    - name: Use Node.js latest
+    - name: Use Node.js
       uses: actions/setup-node@v1
     - name: npm install and build
       run: |
