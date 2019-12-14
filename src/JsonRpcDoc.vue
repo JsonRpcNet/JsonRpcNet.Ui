@@ -13,7 +13,7 @@
         ></SearchBox>
       </BNavbarNav>
 
-      <BNavbarNav class="ml-auto">
+      <BNavbarNav class="ml-auto" v-if="!isSelfHosted">
         <BInputGroup prepend="Server" size="sm">
           <BFormSelect
             right
@@ -41,15 +41,12 @@
     </BNavbar>
 
     <AddServerFormDialog
+      v-if="!isSelfHosted"
       v-bind:show="showAddServerDialog"
       v-bind:existingServerNames="allServerNames"
       v-on:close="showAddServerDialog = false"
       v-on:addServer="addServer($event)"
     />
-
-    <div v-if="configErrorMessage !== void 0" class="error">
-      {{ this.configErrorMessage }}
-    </div>
 
     <div v-if="apiInfo !== void 0">
       <div
@@ -89,11 +86,14 @@
       </div>
     </div>
     <div v-else>
-      <div v-if="apiInfoErrorMessage !== void 0">
-        <div class="error">
-          <p>{{ apiInfoErrorMessage }}</p>
-        </div>
-      </div>
+      <BAlert
+        v-if="apiInfoErrorMessage !== void 0"
+        show
+        variant="danger"
+        class="error"
+      >
+        {{ apiInfoErrorMessage }}
+      </BAlert>
     </div>
   </div>
 </template>
@@ -102,6 +102,7 @@
 import ApiInfo from "./components/ApiInfo.vue";
 import ApiService from "./components/ApiService.vue";
 import {
+  BAlert,
   BButton,
   BFormSelect,
   BInputGroup,
@@ -124,6 +125,7 @@ export default {
     AddServerFormDialog,
     ApiInfo,
     ApiService,
+    BAlert,
     BButton,
     BFormSelect,
     BInputGroup,
@@ -137,7 +139,7 @@ export default {
   },
   data: function() {
     return {
-      configErrorMessage: void 0,
+      isSelfHosted: false,
       apiInfoErrorMessage: void 0,
       apiInfo: {
         info: {},
@@ -168,7 +170,7 @@ export default {
   methods: {
     getJson(url) {
       return new Promise(function(resolve, reject) {
-        let xhr = new XMLHttpRequest();
+        const xhr = new XMLHttpRequest();
         xhr.open("GET", url);
         xhr.onload = () => {
           if (xhr.status >= 200 && xhr.status < 300) {
@@ -186,16 +188,39 @@ export default {
         xhr.send();
       });
     },
+    setupSelfHosted() {
+      this.isSelfHosted = true;
+      let path = window.location.pathname;
+      if (path) {
+        if (path.startsWith("/")) {
+          path = path.slice(1);
+        }
+        if (path && !path.endsWith("/")) {
+          path = `${path}/`;
+        }
+      }
+      const localhostInfo = {
+        name: window.location.hostname,
+        url: `${window.location.protocol}//${window.location.host}`,
+        ws: `ws://${window.location.host}`,
+        docs: `${path}jsonRpcApi.json`
+      };
+      this.servers = [localhostInfo];
+      this.selectServerByName(localhostInfo.name);
+    },
     selectServer: async function() {
       this.apiInfo = void 0;
       this.apiInfoErrorMessage = void 0;
       this.$root.$data.notificationsService.clearAll();
 
-      if (this.selectedServerInfo !== void 0) {
-        localStorage.selectedServer = this.selectedServerInfo.name;
-      } else {
-        localStorage.removeItem("selectedServer");
-        return;
+      if (!this.isSelfHosted) {
+        // only save selected server if not self-hosted, otherwise the server is always the same
+        if (this.selectedServerInfo !== void 0) {
+          localStorage.selectedServer = this.selectedServerInfo.name;
+        } else {
+          localStorage.removeItem("selectedServer");
+          return;
+        }
       }
 
       const docUrl = `${this.selectedServerInfo.url}/${this.selectedServerInfo.docs}`;
@@ -309,6 +334,7 @@ export default {
   },
   async mounted() {
     this.apiInfo = void 0;
+
     const configFile = "./config.json";
     const errorMessage = `Failed to load configuration file from ${configFile}.`;
     try {
@@ -331,7 +357,9 @@ export default {
         this.selectServer();
       }
     } catch (e) {
-      this.configErrorMessage = errorMessage + " " + e.message;
+      // eslint-disable-next-line
+      console.warn(`${errorMessage + " " + e.message}. Falling back to self-hosted at localhost.`)
+      this.setupSelfHosted(); // falls back to self-hosted in case config cannot be loaded or isn't found
     }
   }
 };
@@ -375,8 +403,7 @@ export default {
 
   .error {
     margin: 20px;
-    font-size: 20px;
-    color: $error-color;
+    font-size: 16px;
   }
 
   .navBar {
