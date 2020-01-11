@@ -1,6 +1,6 @@
-[![GitHub build action status](https://github.com/JsonRpcNet/JsonRpcNet.Docs.Ui/workflows/Build/badge.svg)](https://github.com/JsonRpcNet/JsonRpcNet.Docs.Ui/actions)
+[![GitHub build action status](https://github.com/JsonRpcNet/JsonRpcNet.Ui/workflows/Build/badge.svg)](https://github.com/JsonRpcNet/JsonRpcNet.Ui/actions)
 
-# JsonRpcNet.Docs.Ui
+# JsonRpcNet.Ui
 
 ## Project setup
 ```
