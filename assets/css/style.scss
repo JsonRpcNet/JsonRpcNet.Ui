@@ -1,0 +1,55 @@
+---
+---
+
+// Breakpoints
+$large-breakpoint: 64em !default;
+$medium-breakpoint: 42em !default;
+
+@mixin large {
+  @media screen and (min-width: #{$large-breakpoint}) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media screen and (min-width: #{$medium-breakpoint}) and (max-width: #{$large-breakpoint}) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media screen and (max-width: #{$medium-breakpoint}) {
+    @content;
+  }
+}
+
+img.project-name {
+  display: block;
+  margin: auto;
+  margin-bottom: 50px;
+
+  @include large {
+    font-size: 600px;
+  }
+
+  @include medium {
+    font-size: 450px;
+  }
+
+  @include small {
+    width: 300px;
+  }
+}
+
+h1.project-name {
+  font-weight: normal;
+  color: #beffe2;
+}
+
+header.page-header {
+  background-color: #1c1c1c;  background-image: linear-gradient(120deg, #1c1c1c, #1c1c1c)
+}
+
+$section-headings-color: #009a57;
+
+@import "{{ site.theme }}";

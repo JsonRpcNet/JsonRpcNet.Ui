@@ -1,0 +1,6 @@
+theme: jekyll-theme-cayman
+logo: /assets/images/banner-JsonRpcNet.png
+title: JsonRpcNet
+description: Documented JSON RPC 2.0 Websocket Endpoints
+github_organization_url: https://github.com/JsonRpcNet
+nuget_organization_url: https://www.nuget.org/profiles/JsonRpcNet
