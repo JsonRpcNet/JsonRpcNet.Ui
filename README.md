@@ -1,2 +1,2 @@
-# JsonRpcNet.github.io
-JsonRpcNet Organization Page
+# JsonRpcNet.Ui
+JsonRpcNet UI page

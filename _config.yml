@@ -1,6 +1,7 @@
 theme: jekyll-theme-cayman
 logo: /assets/images/banner-JsonRpcNet.png
-title: JsonRpcNet
+title: JsonRpcNet UI
 description: Documented JSON RPC 2.0 Websocket Endpoints
-github_organization_url: https://github.com/JsonRpcNet
-nuget_organization_url: https://www.nuget.org/profiles/JsonRpcNet
+github:
+  repo_url: https://github.com/JsonRpcNet/JsonRpcNet.Ui
+  zip_url: https://github.com/JsonRpcNet/JsonRpcNet.Ui/releases/download/v1.0.1/jsonrpcnet-ui.zip
