@@ -18,7 +18,7 @@ jobs:
         run: |
           npm ci
           npm run build
-          zip -r jsonrpcnet-docs-ui.zip ./dist
+          zip -r jsonrpcnet-ui.zip ./dist
         env:
           CI: true
       - name: Create Release
