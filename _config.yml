@@ -2,6 +2,7 @@ theme: jekyll-theme-cayman
 logo: /assets/images/banner-JsonRpcNet.png
 title: JsonRpcNet UI
 description: Web User Interface
+organization_page_url: https://jsonrpcnet.github.io/
 github:
   repo_url: https://github.com/JsonRpcNet/JsonRpcNet.Ui
   zip_url: https://github.com/JsonRpcNet/JsonRpcNet.Ui/releases/download/v1.0.1/jsonrpcnet-ui.zip
