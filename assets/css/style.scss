@@ -26,7 +26,6 @@ $medium-breakpoint: 42em !default;
 img.project-name {
   display: block;
   margin: auto;
-  margin-bottom: 50px;
 
   @include large {
     font-size: 600px;
@@ -44,6 +43,10 @@ img.project-name {
 h1.project-name {
   font-weight: normal;
   color: #beffe2;
+}
+
+h2.project-tagline {
+  opacity: 1;
 }
 
 header.page-header {
