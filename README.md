@@ -1,26 +1,5 @@
-[![GitHub build action status](https://github.com/JsonRpcNet/JsonRpcNet.Ui/workflows/Build/badge.svg)](https://github.com/JsonRpcNet/JsonRpcNet.Ui/actions)
-
 # JsonRpcNet.Ui
 
-## Project setup
-```
-npm install
-```
+[![GitHub build action status](https://github.com/JsonRpcNet/JsonRpcNet.Ui/workflows/Build/badge.svg)](https://github.com/JsonRpcNet/JsonRpcNet.Ui/actions)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Visit https://jsonrpcnet.github.io/JsonRpcNet.Ui/ to read the documentation.
