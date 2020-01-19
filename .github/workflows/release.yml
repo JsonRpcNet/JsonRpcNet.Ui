@@ -14,10 +14,11 @@ jobs:
       - uses: actions/checkout@v1
       - name: Use Node.js
         uses: actions/setup-node@v1
-      - name: npm install and build
+      - name: Install, build, test and pack
         run: |
           npm ci
           npm run build
+          npm run test
           zip -r jsonrpcnet-ui.zip ./dist
         env:
           CI: true
