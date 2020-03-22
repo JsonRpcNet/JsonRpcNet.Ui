@@ -2,12 +2,16 @@ import { Notification } from "../models/Notification.model";
 
 export class NotificationsService {
   notifications = [];
-  
+
   notificationTimeoutMs;
   maxNotifications;
   cleanUpIntervalMs;
 
-  constructor(notificationTimeout = 60000, maxNotifications = 200, cleanUpInterval = 5000) {
+  constructor(
+    notificationTimeout = 60000,
+    maxNotifications = 200,
+    cleanUpInterval = 5000
+  ) {
     this.notificationTimeoutMs = notificationTimeout;
     this.maxNotifications = maxNotifications;
     this.cleanUpIntervalMs = cleanUpInterval;
@@ -15,8 +19,9 @@ export class NotificationsService {
     // cleanup loop
     setInterval(() => {
       this.notifications = [
-        ...this.notifications
-          .filter(n => !n.isExpired(this.notificationTimeoutMs))
+        ...this.notifications.filter(
+          n => !n.isExpired(this.notificationTimeoutMs)
+        )
       ];
     }, this.cleanUpIntervalMs);
   }
@@ -27,6 +32,9 @@ export class NotificationsService {
 
   add(color, serviceName, title, content) {
     const notification = new Notification(color, serviceName, title, content);
-    this.notifications = [notification, ...this.notifications.slice(0, this.maxNotifications - 1)];
+    this.notifications = [
+      notification,
+      ...this.notifications.slice(0, this.maxNotifications - 1)
+    ];
   }
 }
