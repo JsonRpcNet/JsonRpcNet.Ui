@@ -168,8 +168,8 @@ export default {
       this.connectService =
         this.websocket.state === WebsocketReadyStates.OPEN ? true : false;
     },
-    disconnect() {
-      this.websocket.close();
+    async disconnect() {
+      await this.websocket.close();
       this.websocket = void 0;
       this.connectionStatus = ConnectionStatus.Disconnected;
       this.connectService = false;

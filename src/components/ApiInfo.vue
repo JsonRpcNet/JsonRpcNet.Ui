@@ -2,10 +2,7 @@
   <div id="ApiInfo">
     <div class="api-title">
       <!-- eslint-disable-next-line -->
-      {{ info.title
-      }}<small
-        ><pre class="api-version">{{ info.version }}</pre></small
-      >
+      {{ info.title }}<small><pre class="api-version">{{ info.version }}</pre></small>
     </div>
 
     <div class="detailed-info">
