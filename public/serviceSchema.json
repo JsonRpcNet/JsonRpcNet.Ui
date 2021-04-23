@@ -121,7 +121,7 @@
         "params": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/parameter"
+            "$ref": "#/definitions/schema"
           }
         }
       }
