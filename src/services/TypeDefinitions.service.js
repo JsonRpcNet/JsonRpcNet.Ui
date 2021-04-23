@@ -66,6 +66,9 @@ export class TypeDefinitionsService {
     if (paramTypeDef.type === undefined && "enum" in paramTypeDef) {
       return paramTypeDef.enum[0];
     }
+    if (paramTypeDef.default !== undefined) {
+      return paramTypeDef.default;
+    }
     switch (paramTypeDef.type.toLowerCase()) {
       case "object": {
         let paramType = {};
