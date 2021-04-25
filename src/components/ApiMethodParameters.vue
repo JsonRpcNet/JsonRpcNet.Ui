@@ -36,11 +36,9 @@ export default {
   },
   methods: {
     createParametersJsonTemplate() {
-      let parametersJson = {};
-      this.parameters.forEach(param => {
-        // eslint-disable-next-line
-        parametersJson[param.name] = this.$root.$data.typeDefinitionsService.createDefaultObject(param.schema);
-      });
+      const parametersJson = this.parameters.map(schema =>
+        this.$root.$data.typeDefinitionsService.createDefaultObject(schema)
+      );
 
       const parametersTemplate = JSON.stringify(parametersJson, null, 2);
 
